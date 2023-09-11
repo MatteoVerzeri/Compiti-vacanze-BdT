@@ -29,5 +29,15 @@ namespace Compiti_vacanze_BdT
             form2.ShowDialog();
             this.Visible = true;
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Home_Load(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

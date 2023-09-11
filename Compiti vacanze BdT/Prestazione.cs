@@ -13,21 +13,19 @@ namespace Compiti_vacanze_BdT
         public Persona Creatore { get; private set; }
         public Persona Richiedente { get; private set; }
         public DateTime GiornoCreazione { get; private set; }
-        public DateTime GiornoRichiesta { get; private set; }
         public bool Segreteria { get; private set; }
         public string Categoria { get; private set; }
         public string Descrizione { get; private set; }
         public static int Contatore { get; private set; } = 0;
 
         public Prestazione(Persona creatore, Persona richiedente, DateTime giornoCreazione,
-                          DateTime giornoRichiesta, bool segreteria, string categoria, string descrizione, int oreErogate)
+                          bool segreteria, string categoria, string descrizione, int oreErogate)
         {
             Id = Contatore++;
             OreErogate = 0;
             Creatore = creatore;
             Richiedente = richiedente;
             GiornoCreazione = giornoCreazione;
-            GiornoRichiesta = giornoRichiesta;
             Segreteria = segreteria;
             Categoria = categoria;
             Descrizione = descrizione;

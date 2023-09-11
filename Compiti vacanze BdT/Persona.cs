@@ -19,6 +19,17 @@ namespace Compiti_vacanze_BdT
         public Prestazione _prestazione { get; private set; }
         public static int contatore=0;
 
+        public Persona(string name, string surname, string phone, bool segreteria, string zona/*, Prestazione prestazione*/)
+        {
+            _id = contatore++;
+            _name = name;
+            _surname = surname;
+            _phone = phone;
+            _segreteria = segreteria;
+            _ore = 0; // Inizialmente, il socio non ha ore di prestazioni erogate o ricevute.
+            _zona = zona;
+            //_prestazione = prestazione;
+        }
         public Persona(string name, string surname, string phone, bool segreteria, string zona, Prestazione prestazione)
         {
             _id = contatore++;
@@ -28,7 +39,7 @@ namespace Compiti_vacanze_BdT
             _segreteria = segreteria;
             _ore = 0; // Inizialmente, il socio non ha ore di prestazioni erogate o ricevute.
             _zona = zona;
-            _prestazione = prestazione;
+            prestazione = null;
         }
 
         // Metodo per registrare le ore di una prestazione erogata
