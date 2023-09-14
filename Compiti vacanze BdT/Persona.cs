@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 
 namespace Compiti_vacanze_BdT
@@ -28,6 +29,19 @@ namespace Compiti_vacanze_BdT
             _segreteria = segreteria;
             _ore = 0; // Inizialmente, il socio non ha ore di prestazioni erogate o ricevute.
             _zona = zona;
+            //_prestazione = prestazione;
+        }
+        [JsonConstructor]
+        public Persona(int id, string namej, string surnamej, string phonej, bool segreteriaj, string zonaj/*, Prestazione prestazione*/)
+        {
+            _id = id;
+            _name = namej;
+            _surname = surnamej;
+            _phone = phonej;
+            _segreteria = segreteriaj;
+            _ore = 0; // Inizialmente, il socio non ha ore di prestazioni erogate o ricevute.
+            _zona = zonaj;
+            contatore++;
             //_prestazione = prestazione;
         }
         //public Persona(string name, string surname, string phone, bool segreteria, string zona, Prestazione prestazione)

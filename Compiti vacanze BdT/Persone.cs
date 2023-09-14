@@ -37,7 +37,7 @@ namespace Compiti_vacanze_BdT
             }
             try
             { 
-                Persona socio = new Persona(textBox1.Text, textBox2.Text, textBox3.Text, checkBox1.Checked, textBox4.Text/*, p*/);
+                Persona socio = new Persona(textBox1.Text, textBox2.Text, textBox3.Text, checkBox1.Checked, textBox5.Text/*, p*/);
                 banca.Aggiungipersona(socio);
                 banca.SaveDataToJson();
                 MessageBox.Show("socio creato con successo, id: " + socio._id.ToString());
@@ -70,7 +70,7 @@ namespace Compiti_vacanze_BdT
             //.ToList();
             string listaDaStampare = string.Join(Environment.NewLine, banca.GetSociSegreteriaConAltrePrestazioni());
             if(listaDaStampare.Length > 0)
-                MessageBox.Show(listaDaStampare, "Contenuto della Lista", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(listaDaStampare.ToString(), "Contenuto della Lista", MessageBoxButtons.OK, MessageBoxIcon.Information);
             //if (attributiDaStampare != null)
             //    MessageBox.Show(attributiDaStampare.ToString());
             else
@@ -151,6 +151,37 @@ namespace Compiti_vacanze_BdT
                 throw new Exception("qualcosa è andato storto, riprova");
             }
             
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            DateTime data = DateTime.Now;
+            Persona creatore=banca.ricercapersone(int.Parse(textBox22.Text));
+            Persona richiedente = banca.ricercapersone(int.Parse(textBox21.Text));
+            try
+            {
+                Prestazione pr = new Prestazione(textBox23.Text, creatore, richiedente, data, checkBox1.Checked, richTextBox1.Text/*, p*/);
+                banca.Aggiungiprestazione(pr);
+                banca.SaveDataToJson();
+                MessageBox.Show("prestazione creata con successo, id: " + pr.Id.ToString());
+            }
+            //else if(!String.IsNullOrEmpty(textBox6.Text))
+            //{
+            //    Prestazione p = banca.ricercaprestazione(int.Parse(textBox5.Text));
+            //    Persona socio = new Persona(textBox1.Text, textBox2.Text, textBox3.Text, checkBox1.Checked, textBox4.Text, p);
+            //    banca.Aggiungipersona(socio);
+            //    banca.SaveDataToJson();
+            //    MessageBox.Show("socio creato con successo");
+            //}
+            catch
+            {
+                throw new Exception("c'è qualcosa che non va, ricontrolla i dati inseriti");
+            }
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -48,14 +48,11 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.button7 = new System.Windows.Forms.Button();
-            this.textBox19 = new System.Windows.Forms.TextBox();
-            this.textBox20 = new System.Windows.Forms.TextBox();
             this.textBox21 = new System.Windows.Forms.TextBox();
             this.textBox22 = new System.Windows.Forms.TextBox();
             this.textBox23 = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
@@ -73,6 +70,7 @@
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -157,6 +155,7 @@
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(100, 20);
             this.textBox5.TabIndex = 11;
+            this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // textBox12
             // 
@@ -248,26 +247,13 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(111, 418);
+            this.button7.Location = new System.Drawing.Point(70, 411);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(75, 23);
             this.button7.TabIndex = 65;
             this.button7.Text = "Aggiungi";
             this.button7.UseVisualStyleBackColor = true;
-            // 
-            // textBox19
-            // 
-            this.textBox19.Location = new System.Drawing.Point(185, 390);
-            this.textBox19.Name = "textBox19";
-            this.textBox19.Size = new System.Drawing.Size(100, 20);
-            this.textBox19.TabIndex = 50;
-            // 
-            // textBox20
-            // 
-            this.textBox20.Location = new System.Drawing.Point(185, 369);
-            this.textBox20.Name = "textBox20";
-            this.textBox20.Size = new System.Drawing.Size(100, 20);
-            this.textBox20.TabIndex = 49;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // textBox21
             // 
@@ -303,20 +289,11 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(49, 394);
+            this.label27.Location = new System.Drawing.Point(49, 377);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(62, 13);
             this.label27.TabIndex = 44;
             this.label27.Text = "Descrizione";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(49, 373);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(98, 13);
-            this.label28.TabIndex = 43;
-            this.label28.Text = "Giorno di creazione";
             // 
             // label29
             // 
@@ -470,11 +447,20 @@
             this.label11.TabIndex = 80;
             this.label11.Text = "quantità di ore";
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(185, 377);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(100, 96);
+            this.richTextBox1.TabIndex = 81;
+            this.richTextBox1.Text = "";
+            // 
             // Persone
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1281, 557);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.textBox8);
             this.Controls.Add(this.textBox7);
@@ -490,14 +476,11 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.checkBox4);
             this.Controls.Add(this.button7);
-            this.Controls.Add(this.textBox19);
-            this.Controls.Add(this.textBox20);
             this.Controls.Add(this.textBox21);
             this.Controls.Add(this.textBox22);
             this.Controls.Add(this.textBox23);
             this.Controls.Add(this.label26);
             this.Controls.Add(this.label27);
-            this.Controls.Add(this.label28);
             this.Controls.Add(this.label29);
             this.Controls.Add(this.label30);
             this.Controls.Add(this.label31);
@@ -550,14 +533,11 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox4;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.TextBox textBox19;
-        private System.Windows.Forms.TextBox textBox20;
         private System.Windows.Forms.TextBox textBox21;
         private System.Windows.Forms.TextBox textBox22;
         private System.Windows.Forms.TextBox textBox23;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label31;
@@ -575,5 +555,6 @@
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }

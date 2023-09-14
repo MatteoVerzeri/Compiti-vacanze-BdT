@@ -22,7 +22,15 @@ namespace Compiti_vacanze_BdT
             prestazioni = new List<Prestazione>();
             categorie = new List<string>();
         }
-
+        [JsonConstructor]
+        public BdT(List<string> zonej, List<Persona> personej, List<Prestazione> prestazionij, List<string> categoriej)
+        {
+            // Inizializza le liste vuote
+            zone = zonej;
+            persone = personej;
+            prestazioni = prestazionij;
+            categorie = categoriej;
+        }
 
         // a. Metodo per produrre l'elenco dei soci con "debito"
         public List<Persona> GetSociConDebito()
@@ -129,7 +137,7 @@ namespace Compiti_vacanze_BdT
                 {
                     foreach (Prestazione prestazione in prestazioni)
                     {
-                        if(persona._id == prestazione.Creatore._id)
+                        if( prestazione.Creatore._id==persona._id)
                             socisegpres.Add(persona);
                     }
                 }
@@ -147,14 +155,14 @@ namespace Compiti_vacanze_BdT
         // d. Metodo per salvare i dati su file JSON
         public void SaveDataToJson()
         {
-            string existingData = File.Exists(@"C:\Users\matve\source\repos\Compiti-vacanze-BdT\Compiti vacanze BdT\bin\Debug\BdT.json")
-        ? File.ReadAllText(@"C:\Users\matve\source\repos\Compiti-vacanze-BdT\Compiti vacanze BdT\bin\Debug\BdT.json")
+            string existingData = File.Exists("BdT.json")
+        ? File.ReadAllText("BdT.json")
         : "";
 
             // Serializza i dati correnti e i nuovi dati in formato JSON
             string jsonData = JsonConvert.SerializeObject(this, Formatting.Indented);
             // Scrivi i dati combinati nel file JSON
-            File.WriteAllText(@"C:\Users\matve\source\repos\Compiti-vacanze-BdT\Compiti vacanze BdT\bin\Debug\BdT.json",jsonData);
+            File.WriteAllText("BdT.json",jsonData);
             /*string filePath = @"C:\Users\matve\source\repos\Compiti-vacanze-BdT\Compiti vacanze BdT\bin\Debug\BdT.json";
 
             // Leggi il contenuto esistente del file JSON, se presente
@@ -182,12 +190,18 @@ namespace Compiti_vacanze_BdT
             try
             {
                 // Leggi il contenuto del file JSON
-                string jsonData = File.ReadAllText(@"C:\Users\matve\source\repos\Compiti-vacanze-BdT\Compiti vacanze BdT\bin\Debug\BdT.json");
+                string jsonData = File.ReadAllText("BdT.json");
 
                 // Deserializza il JSON in un'istanza della tua classe
                 BdT data = JsonConvert.DeserializeObject<BdT>(jsonData);
-                this.persone = data.persone;
-                this.prestazioni = data.prestazioni;
+                if (data.persone != null)
+                    this.persone = data.persone;
+                if(data.prestazioni != null)
+                    this.prestazioni = data.prestazioni;
+                if (data.zone != null)
+                    this.zone = data.zone;
+                if(data.categorie != null)
+                    this.categorie = data.categorie;
             }
             catch
             {
