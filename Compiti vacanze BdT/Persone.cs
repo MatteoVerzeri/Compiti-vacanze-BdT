@@ -14,6 +14,8 @@ namespace Compiti_vacanze_BdT
     public partial class Persone : Form
     {
         BdT banca;
+        Persona persona;
+        Prestazione prestazione;
         public Persone()
         {
             InitializeComponent();
@@ -25,23 +27,30 @@ namespace Compiti_vacanze_BdT
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            if(String.IsNullOrEmpty(textBox6.Text))
+            try
             {
+                int controllonumerotelefono = int.Parse(textBox3.Text);
+            }
+            catch
+            {
+                throw new Exception("numero di telefono non valido, inserire solo numeri");
+            }
+            try
+            { 
                 Persona socio = new Persona(textBox1.Text, textBox2.Text, textBox3.Text, checkBox1.Checked, textBox4.Text/*, p*/);
                 banca.Aggiungipersona(socio);
                 banca.SaveDataToJson();
-                MessageBox.Show("socio creato con successo");
+                MessageBox.Show("socio creato con successo, id: " + socio._id.ToString());
             }
-            else if(!String.IsNullOrEmpty(textBox6.Text))
-            {
-                Prestazione p = banca.ricercaprestazione(int.Parse(textBox5.Text));
-                Persona socio = new Persona(textBox1.Text, textBox2.Text, textBox3.Text, checkBox1.Checked, textBox4.Text, p);
-                banca.Aggiungipersona(socio);
-                banca.SaveDataToJson();
-                MessageBox.Show("socio creato con successo");
-            }
-            else
+            //else if(!String.IsNullOrEmpty(textBox6.Text))
+            //{
+            //    Prestazione p = banca.ricercaprestazione(int.Parse(textBox5.Text));
+            //    Persona socio = new Persona(textBox1.Text, textBox2.Text, textBox3.Text, checkBox1.Checked, textBox4.Text, p);
+            //    banca.Aggiungipersona(socio);
+            //    banca.SaveDataToJson();
+            //    MessageBox.Show("socio creato con successo");
+            //}
+            catch
             {
                 throw new Exception("c'è qualcosa che non va, ricontrolla i dati inseriti");
             }
@@ -71,6 +80,77 @@ namespace Compiti_vacanze_BdT
         private void button5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            persona = banca.ricercapersone(int.Parse(textBox12.Text));
+            banca.Rimuovipersona(persona);
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            prestazione = banca.ricercaprestazione(int.Parse(textBox12.Text));
+            banca.Rimuoviprestazione(prestazione);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int prova = int.Parse(textBox6.Text);
+                prova = int.Parse(textBox7.Text);
+                prova = int.Parse(textBox8.Text);
+            }
+            catch
+            {
+                throw new Exception("devi inserire numeri, non lettere o simboli");
+            }
+            try
+            {
+                if (textBox6.Text != "" && textBox6.Text != "" && textBox8.Text != "")
+            {
+                persona=banca.ricercapersone(int.Parse(textBox6.Text));
+                prestazione = banca.ricercaprestazione(int.Parse(textBox7.Text));
+                persona.AggiungiOre(int.Parse(textBox8.Text));
+                prestazione.AggiungiOreP(int.Parse(textBox8.Text));
+            }
+            }
+
+            catch
+            {
+                throw new Exception("qualcosa è andato storto, riprova");
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int prova=int.Parse(textBox6.Text);
+                prova = int.Parse(textBox7.Text);
+                prova = int.Parse(textBox8.Text);
+            }
+            catch
+            {
+                throw new Exception("devi inserire numeri, non lettere o simboli");
+            }
+            try
+            {
+                if (textBox6.Text != "" && textBox7.Text != "" && textBox8.Text != "")
+                {
+                    persona = banca.ricercapersone(int.Parse(textBox6.Text));
+                    prestazione = banca.ricercaprestazione(int.Parse(textBox7.Text));
+                    persona.SottraiOre(int.Parse(textBox8.Text));
+                    prestazione.SottraiOreP(int.Parse(textBox8.Text));
+                }
+            }
+
+            catch
+            {
+                throw new Exception("qualcosa è andato storto, riprova");
+            }
+            
         }
     }
 }

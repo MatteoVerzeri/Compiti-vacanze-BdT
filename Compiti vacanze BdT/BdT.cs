@@ -125,9 +125,13 @@ namespace Compiti_vacanze_BdT
             List<Persona> socisegpres = new List<Persona>();
             foreach (Persona persona in persone)
             {
-                if (persona._segreteria == true && persona._prestazione != null)
+                if (persona._segreteria == true)
                 {
-                    socisegpres.Add(persona);
+                    foreach (Prestazione prestazione in prestazioni)
+                    {
+                        if(persona._id == prestazione.Creatore._id)
+                            socisegpres.Add(persona);
+                    }
                 }
             }
             return socisegpres;
